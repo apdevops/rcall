@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.1.1 (Python 3.12.6 on win32)" generated="2024-12-02T14:11:41.267893" rpa="false" schemaversion="5">
+<suite id="s1" name="Rcl" source="D:\depot\rcl">
+<suite id="s1-s1" name="Tests" source="D:\depot\rcl\tests">
+<suite id="s1-s1-s1" name="Test Transport Screen" source="D:\depot\rcl\tests\test_transport_screen.robot">
+<test id="s1-s1-s1-t1" name="Successfully submit a new application" line="7">
+<kw name="Go to the URL" owner="application_transport">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-12-02T14:11:41.621387" level="INFO">Opening browser 'chrome' to base url 'https://granite-staging.rollcall.com.au/business-board/'.</msg>
+<arg>${APPLICATION_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-12-02T14:11:41.621387" elapsed="5.660102"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-12-02T14:11:47.281489" elapsed="0.042010"/>
+</kw>
+<status status="PASS" start="2024-12-02T14:11:41.621387" elapsed="5.702112"/>
+</kw>
+<kw name="Login using the credentials provided" owner="application_transport">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${signin_button}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-12-02T14:11:47.325490" elapsed="0.044840"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-12-02T14:11:47.371348" level="INFO">Typing text 'rollcallsafetysolutions@gmail.com' into text field 'xpath=//input[@name="email"]'.</msg>
+<arg>${login_email_input}</arg>
+<arg>${USERNAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-12-02T14:11:47.371348" elapsed="0.396026"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-12-02T14:11:47.767374" level="INFO">Typing text 'Pass@1234!' into text field 'xpath=//input[@name="password"]'.</msg>
+<arg>${login_password_input}</arg>
+<arg>${PASSWORD}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-12-02T14:11:47.767374" elapsed="0.126134"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-12-02T14:11:47.894503" level="INFO">Clicking button 'xpath=//button[contains(text(), "Sign In")]'.</msg>
+<arg>${signin_button}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-12-02T14:11:47.894503" elapsed="0.132668"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${company_logo}</arg>
+<arg>10</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-12-02T14:11:48.027171" elapsed="3.670094"/>
+</kw>
+<status status="PASS" start="2024-12-02T14:11:47.324493" elapsed="4.373845"/>
+</kw>
+<kw name="If not already on the Organizations List, click &quot;Organisations&quot;" owner="application_transport">
+<kw name="Get Location" owner="SeleniumLibrary">
+<msg time="2024-12-02T14:11:51.708018" level="INFO">${current_url} = https://granite-staging.rollcall.com.au/business-board/</msg>
+<var>${current_url}</var>
+<doc>Returns the current browser window URL.</doc>
+<status status="PASS" start="2024-12-02T14:11:51.699119" elapsed="0.008899"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${current_url}' != '${ORG_PAGE_URL}'</arg>
+<arg>Click Element</arg>
+<arg>${organisations}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-12-02T14:11:51.708018" elapsed="0.000978"/>
+</kw>
+<status status="PASS" start="2024-12-02T14:11:51.699119" elapsed="0.009877"/>
+</kw>
+<kw name="Click the Pass Thru Authentication button on an organization" owner="application_transport">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${organisation_pass_thru_apna_zone}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-12-02T14:11:51.709993" elapsed="0.912099"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-12-02T14:11:52.623090" level="INFO">Clicking element 'xpath=//span[@title="Apna zone"]/../../../div[2]/div/div/button'.</msg>
+<arg>${organisation_pass_thru_apna_zone}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-12-02T14:11:52.623090" elapsed="1.930211"/>
+</kw>
+<status status="PASS" start="2024-12-02T14:11:51.709993" elapsed="2.843308"/>
+</kw>
+<kw name="Verify that this button redirects you to the Transport Screen of that organization" owner="application_transport">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${transport_page_name}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-12-02T14:11:54.554021" elapsed="1.775454"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2024-12-02T14:11:56.329475" level="INFO">Verifying element 'xpath=//span[text()= "Transport Screen"]' contains exact text 'Transport Screen'.</msg>
+<arg>${transport_page_name}</arg>
+<arg>${transport_page}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2024-12-02T14:11:56.329475" elapsed="0.038557"/>
+</kw>
+<kw name="Get Title" owner="SeleniumLibrary">
+<msg time="2024-12-02T14:11:56.384053" level="INFO">${page_title} = RollCall - Apna zone</msg>
+<var>${page_title}</var>
+<doc>Returns the title of the current page.</doc>
+<status status="PASS" start="2024-12-02T14:11:56.368032" elapsed="0.016021"/>
+</kw>
+<kw name="Should Match" owner="BuiltIn">
+<arg>${page_title}</arg>
+<arg>${transport_page_title}</arg>
+<doc>Fails if the given ``string`` does not match the given ``pattern``.</doc>
+<status status="PASS" start="2024-12-02T14:11:56.384053" elapsed="0.000992"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-12-02T14:11:56.385045" elapsed="2.376727"/>
+</kw>
+<status status="PASS" start="2024-12-02T14:11:54.554021" elapsed="4.207751"/>
+</kw>
+<doc>This test case covers using a Rollcall admin account automates checking if pass-through authentication is still working.</doc>
+<status status="PASS" start="2024-12-02T14:11:41.620371" elapsed="17.143471"/>
+</test>
+<status status="PASS" start="2024-12-02T14:11:41.294369" elapsed="17.473429"/>
+</suite>
+<status status="PASS" start="2024-12-02T14:11:41.293231" elapsed="17.476608"/>
+</suite>
+<status status="PASS" start="2024-12-02T14:11:41.268854" elapsed="17.504450"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Rcl">Rcl</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Tests">Rcl.Tests</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1-s1" name="Test Transport Screen">Rcl.Tests.Test Transport Screen</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
