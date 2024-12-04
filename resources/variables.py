@@ -1,0 +1,5 @@
+APPLICATION_URL = "https://granite-staging.rollcall.com.au/business-board/"
+BROWSER = "chrome"
+USERNAME = "rollcallsafetysolutions@gmail.com"
+PASSWORD = "Pass@1234!"
+ORG_PAGE_URL = "https://granite-staging.rollcall.com.au/business-board/"
